@@ -1,13 +1,23 @@
+"use client";
+
+import { TipoProduto } from "@/types";
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Produtos() {
-    const produtos = [
-        {id: 1, nome: "Mouse", preco: 100.0, qtd: 3 },
-        {id: 2, nome: "Monitor", preco: 760.5, qtd: 1 },
-        {id: 3, nome: "Headset", preco: 250.0, qtd: 2 },
-        {id: 4, nome: "Teclado", preco: 1.0, qtd: 1 },
-        {id: 5, nome: "Cabo LAN", preco: 5.0, qtd: 5 }
-    ]
+
+    const [produtos, setProdutos] = useState<TipoProduto[]>([]);
+
+    // use effect - hooks
+    useEffect(() => {
+        const consumoAPI = async ()=>{ // function
+            const response = await fetch("http://localhost:3000/api/base-produtos");
+            const dados = await response.json();
+            setProdutos(dados);
+        }
+        consumoAPI();
+    }, [])
+    
 
     return (
         <div>
@@ -37,9 +47,10 @@ export default function Produtos() {
 
                 <tfoot>
                     <tr>
-                        <th>
-
-                        </th>
+                        <td colSpan={5}>
+                            Total de registros : {produtos.length}
+                        </td>
+                        
                     </tr>
                 </tfoot>
             </table>

@@ -1,18 +1,34 @@
+"use client";
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function Produtos() {
-    const produtos = [
-        {id: 1, nome: "Mouse", preco: 100.0, qtd: 3 },
-        {id: 2, nome: "Monitor", preco: 760.5, qtd: 1 },
-        {id: 3, nome: "Headset", preco: 250.0, qtd: 2 },
-        {id: 4, nome: "Teclado", preco: 1.0, qtd: 1 },
-        {id: 5, nome: "Cabo LAN", preco: 5.0, qtd: 5 }
-    ]
+
+    const [contador, setContador] = useState(1);
+
+    useEffect(() => {
+        const consumoApi = async ()=>{
+            s
+        }
+        consumoApi();
+    }, [])
+    
+    
+    // useEffect(() => {
+
+    //     console.log("first");
+    //     return () => {
+    //         console.log(contador);
+
+    //     }
+    // }, [contador]);
+
 
     return (
         <div>
             <h2>Produtos</h2>
-            <table>
+            <button onClick={() => setContador(prevContador => prevContador + contador)}>contador - {contador}</button>
+            {/* <table>
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -42,7 +58,7 @@ export default function Produtos() {
                         </th>
                     </tr>
                 </tfoot>
-            </table>
+            </table> */}
         </div>
     )
 }
